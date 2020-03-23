@@ -48,30 +48,27 @@ Imitation Learning with Baxter Robot using Hi-Fives
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-
-The goal of this project is to successfully learn hi-fives through human-robot interaction. We will be using an Imitation Learning approach that incorporates Bayesian Interaction Primitives (reference to Joe). Through this experiment, we aim to develop a responsive interaction with the robot.
-
+The goal of this project is to successfully learn hi-fives for human-robot interaction. We will be using an Imitation Learning approach by incorporating Bayesian Interaction Primitives \cite{c1}. Through expert-guided demonstrations, we train the robot to learn relationships between human and robot trajectories. We demonstrate that the robot is able to complete the interaction with a human and successfully issue a hi-five.
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
-Teaching robots how to learn new tasks and interact with humans can be done using a variety of methods. Imitation learning, which uses a human expert to guide the interaction, is one popular approach that we seek to use for this experiment.
-
-
+Teaching robots how to interact with humans is an interesting challenge in the field of Human Robot Interaction. The athletic and social components which make humans successful in daily interactions are often difficult to capture. Imitation Learning is a useful tool for these situations, where we are able to capture the ideal actions performed by a human and partner. However, teaching robots how to learn new tasks and interact with humans can be done using a variety of methods. Imitation learning, which uses a human expert to guide the interaction, is one popular approach that we seek to use for this experiment. Reinforcement Learning is another popular option for learning tasks that humans are experienced at. We hypothesize that a Reinforcement Learning approach over a continuous and high-dimensional state space will require a significant number of demonstrations in order for the robot to learn the hi-five interaction, compared to the Bayesian Interaction approach. As a result, for a simple interaction that is able to be generalized across different robots using limited samples, we found the Bayesian Interaction approach to be suitable for our project.
+\newline
+\indent
+Throughout the semester in CSE598, we were introduced to a number of concepts in Imitation Learning. Dynamic Motor Primitives, which are a powerful tool for Imitation Learning, are compelling due to their biologically-inspired approach. We saw in the case of the frog example, how linear dynamical systems can be created to model the trajectory of an object. However, since many systems have nonlinear behaviour, there is a need to add a forcing function. The forcing function makes the dynamical system nonlinear, and as a drawback, things can quickly get unstable. We hypothesize that this may not be an issue with a more simplistic hi-five interaction, so the DMP approach is also attractive. Ultimately, the uncertainty of how much control theory and differential equations are needed to use DMP's led us to consider other options. On the other hand, we are confident that we could model the forcing by learning weights for the basis function decompositions of a trajectory, as this is what we are doing in our current approach.
 \section{Related Work}
 
 \subsection{Bayesian Interaction Primitives}
-
-Joe Campbell, int prim
-
+\indent The Bayesian Interaction Primitive (BIP) framework is a novel and powerful approach that is being used by the Interactive Robotics Lab at Arizona State University. This SLAM inspired algorithm is useful for encoding spatiotemporal information about the interaction into a state space. BIP approximates each dimension using a weighted linear combination of time-dependent basis functions. In this case, we are using Gaussian basis functions. Included in a state vector are the weights for every basis function, the phase, and phase velocity. As a result, BIP allows us to infer the current state, given previous states (demonstrations) and current observations. Formatting this probabilistically allows the inference to be done using Bayes Filters (in particular, a Kalman Filter) during testing to guide the robot. Since the robot's degrees of freedom are no longer being observed during testing, the BIP framework is based on obtaining a partial observation of the current state to generate the positions/variables of the whole state space. This approach is effective for learning on different types of robots, as there is no domain specific knowledge encoded into the algorithm.
 \subsection{Reinforcement Learning}
 
 Find some RL paper
 
 
 \section{Problem Statement}
-Create a robot that can hi-five in vrep and in person.
+\indent Our Group has decided to use a hybrid approach- that is, using simulation and in-person examples- to present our demonstrations. This includes capturing data in real world through the Optitrack motion capture system.
 
 \subsection{Simulation} 
 We will do simulations in VREP.
