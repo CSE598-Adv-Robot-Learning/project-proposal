@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.4.17)  24 MAR 2020 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.4.17)  28 APR 2020 00:24
 entering extended mode
 **./root.tex
 (root.tex
@@ -213,12 +213,28 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-Underfull \vbox (badness 2486) has occurred while \output is active []
+<Bear.PNG, id=1, 225.2415pt x 270.41025pt>
+File: Bear.PNG Graphic file (type png)
+<use Bear.PNG>
+Package pdftex.def Info: Bear.PNG  used on input line 65.
+(pdftex.def)             Requested size: 91.05649pt x 109.31749pt.
+<Optitracker.jpg, id=3, 4047.12pt x 3035.34pt>
+File: Optitracker.jpg Graphic file (type jpg)
+<use Optitracker.jpg>
+Package pdftex.def Info: Optitracker.jpg  used on input line 88.
+(pdftex.def)             Requested size: 252.94499pt x 189.70828pt.
 
- [1{C:/Users/franc/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+Overfull \hbox (7.22688pt too wide) in paragraph at lines 88--89
+ [][] 
+ []
 
 
-]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1{C:/Users/franc/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+ <./Bear.PNG>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -230,24 +246,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[2] (root.aux) ) 
+[2 <./Optitracker.jpg>] (root.aux) ) 
 Here is how much of TeX's memory you used:
- 1985 strings out of 492946
- 32214 string characters out of 3126266
+ 1997 strings out of 492946
+ 32375 string characters out of 3126266
  103328 words of memory out of 3000000
- 5894 multiletter control sequences out of 15000+200000
+ 5902 multiletter control sequences out of 15000+200000
  33036 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,25p,1194b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/franc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvi
-ps/base/8r.enc}<C:/Users/franc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/ur
-w/times/utmb8a.pfb><C:/Users/franc/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/urw/times/utmbi8a.pfb><C:/Users/franc/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/urw/times/utmr8a.pfb><C:/Users/franc/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on root.pdf (2 pages, 61243 bytes).
+{C:/Users/franc/AppData/Local/Programs/MiKT
+eX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/franc/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/franc/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/franc/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/franc/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on root.pdf (2 pages, 2102304 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
+ 30 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

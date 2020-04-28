@@ -48,7 +48,7 @@ Imitation Learning with Baxter Robot using Hi-Fives
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-The goal of this project is to successfully learn hi-fives for human-robot interaction. We will be using an Imitation Learning approach by incorporating Bayesian Interaction Primitives \cite{c1}. Through expert-guided demonstrations, we train the robot to learn relationships between human and robot trajectories. We demonstrate that the robot is able to complete the interaction with a human and successfully issue a hi-five.
+The goal of this project is to successfully learn hi-fives for human-robot interaction. We used an Imitation Learning approach by incorporating Bayesian Interaction Primitives \cite{c1}. Through expert-guided demonstrations, we train the robot to learn relationships between human and robot trajectories. We demonstrate that the robot is able to complete the interaction with a human and successfully issue a hi-five. We implemented the Bayesian Interaction Primitives to teach a Baxter Robot how to hi-five through imitation learning. Additionally, we compared the trajectories with human bio-mechanics data.
 \end{abstract}
 
 
@@ -56,44 +56,61 @@ The goal of this project is to successfully learn hi-fives for human-robot inter
 \section{INTRODUCTION}
 Teaching robots how to interact with humans is an interesting challenge in the field of Human Robot Interaction. The athletic and social components which make humans successful in daily interactions are often difficult to capture for robots. Nonetheless there are a variety of methods to teach robots to learn new tasks for human interaction. Imitation learning uses a human expert to guide the robot's interaction. Reinforcement Learning is another popular option for learning tasks that humans are experienced at. Bayesian Interaction approach is a probabilistic approach for teaching a robot.
 \newline
-\indent For a simple interaction that is able to be generalized across different robots using limited samples, we found the Bayesian Interaction approach to be suitable for our project. We believe that with a Reinforcement Learning approach over a continuous and high-dimensional state space will require a significant number of demonstrations in order for the robot to learn the hi-five interaction.
+\indent Our goal is to have a simple interaction that is able to be generalized across different robots using limited samples. The Bayesian Interaction approach enables a simple interaction which can be generalized using limited samples. On the other hand, using a Reinforcement Learning approach would require a significant number of demonstrations in order for the robot to learn the hi-five interaction.
 \newline
-\indent
-Throughout the semester in CSE598, we were introduced to a number of concepts in Imitation Learning. We considered these concepts for teaching a robot to hi-5. Dynamic Motor Primitives, which are a powerful tool for Imitation Learning, are compelling due to their biologically-inspired approach. We saw in the case of the frog example, how linear dynamical systems can be created to model the trajectory of an object. However, since many systems have nonlinear behaviour, there is a need to add a forcing function. The forcing function makes the dynamical system nonlinear, and as a drawback, things can quickly get unstable. We hypothesize that this may not be an issue with a more simplistic hi-five interaction, so the DMP approach is also attractive. Ultimately, the uncertainty of how much control theory and differential equations are needed to use DMP's led us to consider other options. On the other hand, we are confident that we could model the forcing by learning weights for the basis function decompositions of a trajectory, as this is what we are doing in our current approach.
+\indent For our project, we train a Baxter robot which is traditionally an industrial robot built by Rethink Robotics. This Baxter robot is refitted in a friendly bear costume. We hope that by developing interactions for this Baxter robot, we can create an emotional support robot which can provide people comfort in times of emotional distress.
+\newline
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.18\textwidth]{Bear.PNG}
+\caption{Example of human hi-fiving Baxter}
+\end{figure}
+
 \section{Related Work}
 
 \subsection{Bayesian Interaction Primitives}
 The Bayesian Interaction Primitive (BIP) framework is a novel and powerful approach that is being used by the Interactive Robotics Lab at Arizona State University. This SLAM inspired algorithm is useful for encoding spatiotemporal information about the interaction into a state space. BIP approximates each dimension using a weighted linear combination of time-dependent basis functions. In this case, we are using Gaussian basis functions. Included in a state vector are the weights for every basis function, the phase, and phase velocity. As a result, BIP allows us to infer the current state, given previous states (demonstrations) and current observations. Formatting this probabilistically allows the inference to be done using Bayes Filters (in particular, a Kalman Filter) during testing to guide the robot. Since the robot's degrees of freedom are no longer being observed during testing, the BIP framework is based on obtaining a partial observation of the current state to generate the positions/variables of the whole state space. This approach is effective for learning on different types of robots, as there is no domain specific knowledge encoded into the algorithm.
 
-
 \section{Problem Statement}
-The goal of this project is for the Baxter robot to successfully issue hi-fives. From our team discussion and discussion with Dr. Amor, our design consideration consists of a quick hi-five with a high success rate. We initially wanted to do most of our training and demonstrations on just the robot, instead of a VREP simulation. Developing purely on the robot would allow us to focus more on the results and methods, rather than having to deploy onto two different platforms. 
-\newline
-\indent However, with the coronavirus situation, we have decided to use a hybrid approach- that is, using simulation and in-person examples- to present our demonstrations. This includes capturing data in real world through the Optitrack motion capture system. The training can be easily verified in-person; additionally, we would like to demonstrate the ability to train and test in simulation. 
+The goal of this project is for the Baxter robot to successfully issue hi-fives. Our design consideration consists of a quick hi-five with a high success rate. We did most of our training and demonstrations on the Baxter robot, we also integrate our work with the VREP simulation tool.
 
-\subsection{Simulation} 
+\subsection{Teaching Baxter}
+
+TODO: Michael explains the machine learning and the math behind the training 
+
+We plan to use the Extended Kalman Filter (EKF) to perform the filtering in the experiment, as this filter is suitable for smaller sample sizes (compared to the Extended Kalman Filter) and offers good performance in practice.
+
+\subsection{Data Generation}
+We collected subject data by using the Optitrack motion capture system, where 3D poses were collected at 120 Hz. Subjects wore a headband and two gloves that are equipped with motion capture markers. By using only three degrees of freedom, we avoid performing inference in a space that is too high-dimensional. After all, hands and head position are likely the only relevant information needed to perform a successful hi-five. We used ROS as our communication protocol and to handle messages.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Optitracker.jpg}
+\caption{Optitracker application running}
+\end{figure}
+
+\subsection{Implementation}
+A huge advantage of using the in-person Baxter robot is that we are able to find joint angle key frames for the training pose easily. For example, we put the robot into puppet mode and then recorded its key positions for a hi-five. Then, all that is required is to interpolate between these points to obtain a motion sequence. This method allowed us to quickly create different hi-five poses and allows us to come up with new poses if we decide to improve our hi-five motion. Lastly, the biggest benefit of using the Baxter in-person is that we have access to a controlled environment- with an Optitrack system, high speed network, and device drivers all configured- so that development and deployment is seamless.
+\newline
+\indent In order to train the Baxter robot, our group conducted approximately 75 in-person demonstrations (hi-fives) on the Baxter robot. Most of these test hi-fives were done using Frankie as the HRI partner, however we did not want our model to overfit the trajectories by using only one person. Therefore, we decided to also use Evan as a HRI partner during training. The hi-five was generated using key frames. We trained the Baxter robot on two different hi-five interaction types. Our first hi-five was very segmented and tried to mimic a robot movement. Our second hi-five was more fluid and smooth like a natural hi-five between two people. 
+
+\subsection{Interaction Analysis and Bio-mechanic Analysis}
+
+TODO: Evan and his bio-mechanic charts
+
+\subsection{Simulation Integration} 
 The simulation tool we are using is VREP. This is a nice tool since its interface is user-friendly and there are useful resources to begin developing with it. We were considering using Gazebo due to its ability to integrate tightly with ROS. However, Gazebo appeared to be heavy compared to other simulators. We ultimately decided on VREP. 
 \newline
 \indent
 One of the challenges we faced while using VREP was that its interface is different than the way we currently interact with the Baxter robot. The simulator has commands to set joint angles, joint velocities, and other options by using the built-in commands. However, we are using ROS topics within the IntPrim framework to control the Baxter robot. Consequently, switching from simulation to real-life would require a large number of code changes and a need to maintain two different types of controllers. 
 \newline
 \indent A work-around lead us to looking into using ROS topics for the VREP simulator, and using PyRep to handle the callbacks from receiving a message. PyRep can call internal LuaScript functions in the simulator, and has greater speed than the Blue Origin (simx). This means that the high frequency topics would be handled better using this PyRep/ROS integration, compared to vanilla VREP, and also gives us the ability to only maintain one ROS controller for both the simulation and real Baxter robot. The next challenge is to figure out which components should be done in-person (which is difficult due to the virus), and see which components can be done by using the simulator. 
-\subsection{In person}
-We predict that we will be using the simulator to handle a greater portion of the project if the virus prevents us from meeting up. Given the situation, we will see if it is practical to also use the real robot during this time. One benefit of conducting in-person experiments is that the physics is perfect (ground truth) and we do not have to deal with any physics engine computation delays which would alter the results of perception and motion planning. A huge advantage of using the in-person Baxter robot is that we are able to find joint angle key frames for the training pose easily. For example, we put the robot into puppet mode and then recorded its key positions for a hi-five. Then, all that is required is to interpolate between these points to obtain a motion sequence. This method allowed us to quickly create different hi-five poses and allows us to come up with new poses if we decide to improve our hi-five motion. Lastly, the biggest benefit of using the Baxter in-person is that we have access to a controlled environment- with an Optitrack system, high speed network, and device drivers all configured- so that development and deployment is seamless.
 
-\section{Experiments}
-\indent Our group conducted approximately 75 in-person demonstrations (hi-fives) on the Baxter robot. Most of these test hi-fives were done using Frankie as the HRI partner, however we did not want our model to overfit the trajectories by using only one person. Therefore, we decided to also use Evan as a HRI partner during training. The hi-five was generated using key frames, as discussed in the section above. Since we learned how to conduct the experiments repeatedly and generate a model for testing, we are now focusing on creating a better hi-five to be used. This will require retraining, since the robot is now learning a new interaction. We plan to use the Extended Kalman Filter (EKF) to perform the filtering in the experiment, as this filter is suitable for smaller sample sizes (compared to the Extended Kalman Filter) and offers good performance in practice.
 
-\subsection{Data Generation}
-During the experiments, we collected subject data by using the Optitrack motion capture system, where 3D poses were collected at 120 Hz. Subjects wore a headband and two gloves that are equipped with motion capture markers. By using only three degrees of freedom, we avoid performing inference in a space that is too high-dimensional. After all, hands and head position are likely the only relevant information needed to perform a successful hi-five. We are using ROS as our communication protocol and to handle messages. Topic names that come with the Baxter robot are used, but we will need to replicated/subscribed inside of VREP in order for the deployment to work on both methods.
-
-\subsection{Biomechanics}
-It was suggested by Dr. Amor that we do a biomechanical analysis on the hi-five motion. This would be a nice complement to our work, since we can compare the mechanics of a human-human hi-five to a human-robot hi-five. However, at first glance, we were unable to find research on the biomechanics of a hi-five. We decided that- instead- we can perform our own biomechanical analysis on the human-human motion and compare that to the human-robot motion. This would include using the Optitrack motion capture system for two people, and recording the motion of the hi-fives. We can break up the interaction into one phase, and analyze each part of the phase, similar to how a gait cycle can be evaluated. This will give us a useful benchmark to compare against.
-
-\section{Parameter Tuning}
+\section{Current Limitations and Future Work}
 Some of the parameters that need to be tuned are the number of basis functions per degree of freedom and the scaling factor for each. This is done through a grid-search that tests various combinations during testing and reports the configuration that results in the lowest Mean Absolute Error (MAE) from the ideal trajectory.
 
-\section{Going Forward}
+\section{Conclusion}
 In the future, we plan to finish writing the ROS subscribers and PyRep interfaces in VREP. This will allow us to do offline experiments (simulations, per say) and when/if things subside with the virus, we can test the results in person. Additionally, we plan to meet and use the Optitrack system for the biomechanical analysis, as this will provide us with the most accurate results.
 
 \addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
