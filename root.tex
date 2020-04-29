@@ -96,7 +96,34 @@ A huge advantage of using the in-person Baxter robot is that we are able to find
 
 \subsection{Interaction Analysis and Bio-mechanic Analysis}
 
-TODO: Evan and his bio-mechanic charts
+To complete a bio-mechanical analysis, we first captured a hi-five between two actual humans to get a sense of the motion. Optitrack sensors were placed on the participants' heads, right elbows, and right wrists. The three graphs in Fig. 3 show the x,y, and z positions of the both participants' right wrist. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{biomechanics.png}
+\caption{Human-human hi-five}
+\end{figure} 
+\newline
+\indent From the graphs, we can see that the y-axis in this case likely represents the vertical axis, as the position of both participants wrists within the y-axis are almost the same throughout the entire duration of the hi-five. In a natural hi-five between two people, the participants both move their hands across their body to meet at a center point, resulting in the significant movement in the x-axis and z-axis, towards a single position, seen in the graphs in Fig. 3.
+\newline
+\indent Next, we analyzed the data captured from a hi-five between a person and the robot using the initial hi-five model that we developed. Optitrack sensors were placed on the participant's head, right wrist, and left wrist. Data for the Baxter robot was collected directly from it using the respective ROS topics. The three graphs in Fig. 4 show the x,y and z positions of the human's right wrist, and the robots, right "hand".
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{oldfive.png}
+\caption{Old human-robot hi-five. Note: data after about 1250 on time axis is extraneous}
+\end{figure}
+\newline
+\indent The first thing to note here is that the data for the human is reported by the Optitrac system while the data for the robot is reported by the Baxter itself. This results in the points being mapped with respect to different origins, as shown in the y-axis graph, which once again represents the vertical axis, since the max height of the human's wrist is show to be significantly higher than the max height of the robot's "hand" despite the fact that they are at the same physical height at the time of the hi-five (around 800 on the time axis). This also causes the x-axis and y-axis graphs to look significantly different from the graphs generated from the human-human hi-five. 
+\newline
+\indent The overall movement patterns of each participant of the human-robot hi-five largely match the movement patterns of each participant of the human-human hi-five, even if the positions do not necessarily match up do to the different origin points as previously explained. While the overall patterns do match, the movement is much more jagged due to the stiff nature of the first hi-five model that we created.
+\newline
+\indent Finally, we analyzed the data captured from a hi-five between a person and the Baxter robot using the revised hi-five model that we developed. The same setup was used as the data collected from the original human-robot hi-five. The three graphs in Fig. 5 show the x,y and z positions of the human's right wrist, and the robots, right "hand".
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{newfive.png}
+\caption{New human-robot hi-five}
+\end{figure}
+\newline
+\indent Once again, the origin points used by the Optitrac system and the Baxter robot are different, resulting in the graphs looking significantly different from the human-human hi-five graphs. However, the overall movement patterns of each participant for the new human-robot hi-five match the movements of the participants in the human-human hi-five. With the new hi-five model, we also noticed that the movement within each axis was much more smooth compared to the movements from the old hi-five model, indicating our new model completes the hi-five in a more natural way that better mimics an actual human hi-five. 
 
 \subsection{Simulation Integration} 
 The simulation tool we are using is VREP. This is a nice tool since its interface is user-friendly and there are useful resources to begin developing with it. We were considering using Gazebo due to its ability to integrate tightly with ROS. However, Gazebo appeared to be heavy compared to other simulators. We ultimately decided on VREP. 
