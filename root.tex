@@ -30,6 +30,7 @@
 %\usepackage{times} % assumes new font selection scheme installed
 %\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{mathtools}
 
 \title{\LARGE \bf
 CSE 598 Project Proposal: \\
@@ -123,7 +124,53 @@ To complete a bio-mechanical analysis, we first captured a hi-five between two a
 \caption{New human-robot hi-five}
 \end{figure}
 \newline
-\indent Once again, the origin points used by the Optitrac system and the Baxter robot are different, resulting in the graphs looking significantly different from the human-human hi-five graphs. However, the overall movement patterns of each participant for the new human-robot hi-five match the movements of the participants in the human-human hi-five. With the new hi-five model, we also noticed that the movement within each axis was much more smooth compared to the movements from the old hi-five model, indicating our new model completes the hi-five in a more natural way that better mimics an actual human hi-five. 
+\indent Once again, the origin points used by the Optitrac system and the Baxter robot are different, resulting in the graphs looking significantly different from the human-human hi-five graphs. However, the overall movement patterns of each participant for the new human-robot hi-five match the movements of the participants in the human-human hi-five. With the new hi-five model, we also noticed that the movement within each axis was much more smooth compared to the movements from the old hi-five model, indicating our new model completes the hi-five in a more natural way that better mimics an actual human hi-five.
+\newline
+\indent To get a better comparison between the new robot hi-five model and an actual hi-five between two humans, we computed the correlation coefficients comparing the robot from the human-robot hi-five (new model) to the first human participant in the human-human hi-five:
+\[
+corrcoef(x)_{robot, human_1} = \begin{bmatrix}
+	1 & -0.45045106 \\
+	-0.45045106 & 1
+\end{bmatrix}
+\]
+\newline
+\[
+corrcoef(y)_{robot, human_1} = \begin{bmatrix}
+	1 & 0.53274616 \\
+	0.53274616 & 1
+\end{bmatrix}
+\]
+\newline
+\[
+corrcoef(z)_{robot, human_1} = \begin{bmatrix}
+	1 & 0.25234082 \\
+	0.25234082 & 1
+\end{bmatrix}
+\]
+\newline
+We also computed the correlation coefficients comparing the human from the human-robot hi-five (new model) to the second human participant in the human-human hi-five:
+\[
+corrcoef(x)_{human, human_2} = \begin{bmatrix}
+1 & -0.31119984 \\
+-0.31119984 & 1
+\end{bmatrix}
+\]
+\newline
+\[
+corrcoef(y)_{human, human_2} = \begin{bmatrix}
+1 & 0.56795077 \\
+0.56795077 & 1
+\end{bmatrix}
+\]
+\newline
+\[
+corrcoef(z)_{human, human_2} = \begin{bmatrix}
+1 & -0.55262954 \\
+-0.55262954 & 1
+\end{bmatrix}
+\]
+\newline
+From the above correlation coefficient matrices we see that the corresponding co-variance values from each axis in the robot to human1 comparison matrices is fairly similar to the co-variance values from each axis in the human to human2 comparison matrices. This indicates to us that our interaction with the robot is similar to the interactions between the humans. Therefore, the second hi-five model that we designed is good at matching a natural hi-five between two humans.
 
 \subsection{Simulation Integration} 
 The simulation tool we are using is VREP. This is a nice tool since its interface is user-friendly and there are useful resources to begin developing with it. We were considering using Gazebo due to its ability to integrate tightly with ROS. However, Gazebo appeared to be heavy compared to other simulators. We ultimately decided on VREP. 
