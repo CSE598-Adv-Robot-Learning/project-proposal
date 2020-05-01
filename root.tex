@@ -55,15 +55,15 @@ The goal of this project is to successfully learn hi-fives for human-robot inter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
-Teaching robots how to interact with humans is an interesting challenge in the field of Human Robot Interaction. The athletic and social components which make humans successful in daily interactions are often difficult to capture for robots. Nonetheless there are a variety of methods to teach robots to learn new tasks for human interaction. Imitation learning uses a human expert to guide the robot's interaction. Reinforcement Learning is another popular option for learning tasks that humans are experienced at. Bayesian Interaction approach is a probabilistic approach for teaching a robot.
+Teaching robots how to interact with humans is an interesting challenge in the field of Human Robot Interaction. The athletic and social components which make humans successful in daily interactions are often difficult to capture for robots. Nonetheless there are a variety of methods to teach robots to learn new tasks for human interaction. Imitation learning uses a human expert to guide the robot's interaction. Given the current situation, people are more socially isolated than ever. We hope that adding human interactions to robots can improve a person's overall well-being.
 \newline
-\indent Our goal is to have a simple interaction that is able to be generalized across different robots using limited samples. The Bayesian Interaction approach enables a simple interaction which can be generalized using limited samples. On the other hand, using a Reinforcement Learning approach would require a significant number of demonstrations in order for the robot to learn the hi-five interaction.
+\indent Our goal is to have a simple interaction that is able to be generalized across different robots using limited samples. The Bayesian Interaction approach enables a simple interaction which can be generalized using limited samples.
 \newline
 \indent For our project, we train a Baxter robot which is traditionally an industrial robot built by Rethink Robotics. This Baxter robot is refitted in a friendly bear costume. We hope that by developing interactions for this Baxter robot, we can create an emotional support robot which can provide people comfort in times of emotional distress.
 \newline
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.18\textwidth]{Bear.PNG}
+\includegraphics[width=0.2\textwidth]{Bear.PNG}
 \caption{Example of human hi-fiving Baxter}
 \end{figure}
 
@@ -76,6 +76,7 @@ The Bayesian Interaction Primitive (BIP) framework is a novel and powerful appro
 The goal of this project is for the Baxter robot to successfully issue hi-fives. Our design consideration consists of a quick hi-five with a high success rate. We did most of our training and demonstrations on the Baxter robot, we also integrate our work with the VREP simulation tool.
 
 \subsection{Teaching Baxter}
+In teaching Baxter, we used a library called "Intprim" which is an implementation of the Bayesian Interaction Primitives. 
 
 We trained two different primitives: a slow hi-five and a faster (more realistic) hi-five for our experiments. The Intrpim library was used to generate a model for our different primitives. We then evaluated the performance of each primitive and tested the models. The first model, which had more training examples, did much better than the second model. One of the issues encountered with the second model was that the rosbags were too long, so there was too much noise (only the first half was relevant). After trimming the bags to the correct length, we got worse performance. This leads us to believe that the bags were incorrectly trimmed, or something erreneous happened along the way. However, trimming the first set bags to the correct length improved the performance greatly. With that being said, our first interaction was a success. Due to the current cirumstances, we weren't able to verify whether the second interaction can be improved, as we need the physical robot to collect new training samples.
 
@@ -182,10 +183,10 @@ One of the challenges we faced while using VREP was that its interface is differ
 
 
 \section{Current Limitations and Future Work}
-Some of the parameters that need to be tuned are the number of basis functions per degree of freedom and the scaling factor for each. This is done through a grid-search that tests various combinations during testing and reports the configuration that results in the lowest Mean Absolute Error (MAE) from the ideal trajectory.
+Some of the current limitations of this project are that the Hi-5s are still a bit slow and we can work on improving it. The Machine Learning Model needs improvement. Perhaps the model can be improved with better training data, or parameter exploration. For future work, we would like to apply the learning model onto various other robots and also explore a wide variety of Hi-5 interactions/gestures.
 
 \section{Conclusion}
-In the future, we plan to finish writing the ROS subscribers and PyRep interfaces in VREP. This will allow us to do offline experiments (simulations, per say) and when/if things subside with the virus, we can test the results in person. Additionally, we plan to meet and use the Optitrack system for the biomechanical analysis, as this will provide us with the most accurate results.
+In conclusion we taught a Baxter Robot to Hi-5. We had both a real life implementation and a simulated implementation. We finished writing the ROS subscribers and PyRep interfaces in VREP. We compared the robot movement with human biomechanical analysis. We hope to continue to improve the human-robot interaction and expand this to generalize to other interactions improving human well being through robot interactions.
 
 \addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens
