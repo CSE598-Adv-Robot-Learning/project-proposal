@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.28)  29 APR 2020 20:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.30)  30 APR 2020 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -302,7 +302,12 @@ File: Bear.PNG Graphic file (type png)
 <use Bear.PNG>
 Package pdftex.def Info: Bear.PNG  used on input line 66.
 (pdftex.def)             Requested size: 91.05649pt x 109.31749pt.
-<Optitracker.jpg, id=3, 4047.12pt x 3035.34pt>
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./Bear.PNG>]
+<Optitracker.jpg, id=13, 4047.12pt x 3035.34pt>
 File: Optitracker.jpg Graphic file (type jpg)
 <use Optitracker.jpg>
 Package pdftex.def Info: Optitracker.jpg  used on input line 89.
@@ -312,13 +317,6 @@ Overfull \hbox (7.22688pt too wide) in paragraph at lines 89--90
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
- <./Bear.PNG>]
 <biomechanics.png, id=14, 1923.185pt x 484.81125pt>
 File: biomechanics.png Graphic file (type png)
 <use biomechanics.png>
@@ -348,12 +346,6 @@ Package pdftex.def Info: newfive.png  used on input line 123.
 Overfull \hbox (7.22688pt too wide) in paragraph at lines 123--124
  [][] 
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2 <./Optitracker.jpg> <./biomechanics.png> <./oldfive.png>]
 Overfull \hbox (2.257pt too wide) detected at line 135
@@ -393,6 +385,7 @@ Overfull \hbox (9.05873pt too wide) detected at line 171
  = []
  []
 
+[3 <./newfive.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -404,29 +397,31 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[3 <./newfive.png>] (./root.aux) ) 
+[4
+
+] (./root.aux) ) 
 Here is how much of TeX's memory you used:
  3184 strings out of 492982
  48311 string characters out of 6134896
- 120836 words of memory out of 5000000
+ 119835 words of memory out of 5000000
  6724 multiletter control sequences out of 15000+600000
  33490 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,25p,1191b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on root.pdf (3 pages, 2331031 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on root.pdf (4 pages, 2332185 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

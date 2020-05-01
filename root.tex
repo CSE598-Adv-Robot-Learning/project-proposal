@@ -77,9 +77,9 @@ The goal of this project is for the Baxter robot to successfully issue hi-fives.
 
 \subsection{Teaching Baxter}
 
-TODO: Michael explains the machine learning and the math behind the training 
+We trained two different primitives: a slow hi-five and a faster (more realistic) hi-five for our experiments. The Intrpim library was used to generate a model for our different primitives. We then evaluated the performance of each primitive and tested the models. The first model, which had more training examples, did much better than the second model. One of the issues encountered with the second model was that the rosbags were too long, so there was too much noise (only the first half was relevant). After trimming the bags to the correct length, we got worse performance. This leads us to believe that the bags were incorrectly trimmed, or something erreneous happened along the way. However, trimming the first set bags to the correct length improved the performance greatly. With that being said, our first interaction was a success. Due to the current cirumstances, we weren't able to verify whether the second interaction can be improved, as we need the physical robot to collect new training samples.
 
-We plan to use the Extended Kalman Filter (EKF) to perform the filtering in the experiment, as this filter is suitable for smaller sample sizes (compared to the Extended Kalman Filter) and offers good performance in practice.
+We used the Extended Kalman Filter (EKF) to perform the filtering in the experiment, as this filter is suitable for smaller sample sizes (compared to the Extended Kalman Filter) and offers good performance in practice.
 
 \subsection{Data Generation}
 We collected subject data by using the Optitrack motion capture system, where 3D poses were collected at 120 Hz. Subjects wore a headband and two gloves that are equipped with motion capture markers. By using only three degrees of freedom, we avoid performing inference in a space that is too high-dimensional. After all, hands and head position are likely the only relevant information needed to perform a successful hi-five. We used ROS as our communication protocol and to handle messages.
